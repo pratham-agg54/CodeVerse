@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.mainWrap {
+    display: flex;
+    height: 100vh;
+}
+
+.aside {
+    width: 250px;
+    background-color: black;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.asideInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logoImage {
+    width: 100px;
+    height: auto;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.clientsList {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-top: 1px solid #34495e;
+    padding-top: 10px;
+}
+
+.clientsList::-webkit-scrollbar {
+    width: 5px;
+}
+
+.clientsList::-webkit-scrollbar-thumb {
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #138496;
+}
+
+.leaveBtn {
+    background-color: #e74c3c;
+}
+
+.leaveBtn:hover {
+    background-color: #c0392b;
+}
+
+.editorWrap {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+    position: relative;
+}
+
+.editorContainer {
+    width: 100%;
+    height: 100%;
+}

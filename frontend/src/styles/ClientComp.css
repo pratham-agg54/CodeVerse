@@ -1,0 +1,26 @@
+.client {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .client:hover {
+    background-color: #444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .username {
+    margin-left: 12px;
+    font-size: 16px;
+    color: #f1f1f1;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
