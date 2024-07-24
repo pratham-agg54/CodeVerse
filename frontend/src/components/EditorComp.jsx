@@ -3,18 +3,13 @@ import AceEditor from  'react-ace'
 import "ace-builds/src-min-noconflict/mode-java"
 import "ace-builds/src-min-noconflict/mode-c_cpp"
 import "ace-builds/src-min-noconflict/mode-python"
-import "ace-builds/src-min-noconflict/mode-javascript"
+import "ace-builds/src-min-noconflict/mode-golang"
 import "ace-builds/src-min-noconflict/theme-monokai"
 import "ace-builds/src-min-noconflict/theme-github"
 import "ace-builds/src-min-noconflict/theme-twilight"
 import "ace-builds/src-min-noconflict/theme-xcode"
 import "ace-builds/src-min-noconflict/ext-language_tools"
-import "ace-builds/src-min-noconflict/worker-javascript";
 import '../styles/EditorComp.css'
-
-function onChange (newValue) {
-    console.log("change", newValue);
-}
 
 function EditorComp(props) {
     const [mode, setMode] = useState("c_cpp");
@@ -36,7 +31,7 @@ function EditorComp(props) {
                     <option value="c_cpp">C++</option>
                     <option value="java">Java</option>
                     <option value="python">Python</option>
-                    <option value="javascript">JavaScript</option>
+                    <option value="golang">Go</option>
                 </select>
             </label>
             <label>
@@ -54,7 +49,6 @@ function EditorComp(props) {
             theme={theme}
             name="unique"
             placeholder='Collaborate and write your code here...'
-            onChange={onChange}
             showGutter={true}
             highlightActiveLine={false}
             showPrintMargin={false}
@@ -64,7 +58,7 @@ function EditorComp(props) {
             setOptions={{
                 enableBasicAutocompletion: true,
                 enableLiveAutocompletion: true,
-                enableSnippets: true,
+                enableSnippets: false,
                 showLineNumbers: true
             }}
             width='100%'
