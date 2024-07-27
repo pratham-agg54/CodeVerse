@@ -31,9 +31,22 @@ Welcome to CodeVerse, a dynamic multi-user code editor designed to facilitate re
 
 ## Tech Stack
 
-- **Frontend**: React, Ace Editor, React Avatar, React Hot Toast
-- **Backend**: Node.js, Express, Socket.io
-- **Utilities**: UUID
+### Frontend
+
+- **React**: A JavaScript library for building the user interface and managing the state of the code editor.
+- **Ace Editor**: Provides a customizable code editing experience with syntax highlighting, autocompletion, and bracket matching.
+- **React Avatar**: Displays user avatars in the collaborative environment.
+- **React Hot Toast**: For displaying notifications and alerts.
+
+### Backend
+
+- **Node.js**: A JavaScript runtime for building the server-side logic and handling real-time communication.
+- **Express**: A web framework for managing routes and server-side operations.
+- **Socket.io**: Enables real-time, bidirectional communication between clients and the server.
+
+### Utilities
+
+- **UUID**: Generates unique room IDs to manage collaborative sessions.
 
 ## Getting Started
 
@@ -46,24 +59,44 @@ Ensure you have the following installed:
 
 ### Installation
 
-1. **Clone the repository:**
+1. **Fork the repository:**
+
+   Go to [CodeVerse GitHub Repository](https://github.com/pratham-agg54/CodeVerse) and click on the "Fork" button at the top right of the page.
+
+2. **Clone your forked repository:**
 
     ```bash
-    git clone https://github.com/pratham-agg54/CodeVerse.git
+    git clone https://github.com/your-username/CodeVerse.git
     cd CodeVerse
     ```
 
-2. **Install dependencies:**
+3. **Install dependencies for both backend and frontend:**
 
-    ```bash
-    npm install
-    ```
+    - **Backend:**
+        ```bash
+        cd backend
+        npm install
+        ```
 
-3. **Start the server:**
+    - **Frontend:**
+        ```bash
+        cd ../frontend
+        npm install
+        ```
 
-    ```bash
-    npm start
-    ```
+4. **Start the servers:**
+
+    - **Backend:**
+        ```bash
+        cd ../backend
+        npm start
+        ```
+
+    - **Frontend:**
+        ```bash
+        cd ../frontend
+        npm start
+        ```
 
     The application should now be running at `http://localhost:3000`.
 
