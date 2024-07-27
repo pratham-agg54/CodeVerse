@@ -13,7 +13,9 @@ function HomePage() {
     event.preventDefault();
     if (username && roomID) {
       toast.success ('Room Joined Successfully!');
-      navigate (`/editor/${roomID}`);
+      navigate (`/editor/${roomID}`, {
+        state: {username}
+      });
     }
     else if (!username) {
       toast.error ('Enter a username');

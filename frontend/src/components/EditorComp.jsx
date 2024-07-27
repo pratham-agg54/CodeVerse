@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AceEditor from  'react-ace'
 import "ace-builds/src-min-noconflict/mode-java"
 import "ace-builds/src-min-noconflict/mode-c_cpp"
@@ -14,6 +14,14 @@ import '../styles/EditorComp.css'
 function EditorComp(props) {
     const [mode, setMode] = useState("c_cpp");
     const [theme, setTheme] = useState("monokai");
+    // const [code, newCode] = useState ({props.code});
+    const editorRef = useRef(null);
+
+    useEffect( () => {
+        if (editorRef.current && editorRef.current.editor.getValue() !== props.code) {
+            editorRef.current.editor.setValue(props.code, 1);
+        }
+    }, [props.code]);
     
     const handleModeChange=(e)=>{
         setMode(e.target.value);
@@ -22,6 +30,12 @@ function EditorComp(props) {
     const handleThemeChange=(e)=>{
         setTheme(e.target.value);
     }
+
+    const handleCodeChange = (localCode) => {
+        // newCode = set (localCode);
+        props.onCodeChange (localCode);
+    }
+
   return (
     <div className='editorContainer'>
         <div className='dropdowns'>
@@ -47,7 +61,7 @@ function EditorComp(props) {
         <AceEditor 
             mode={mode}
             theme={theme}
-            name="unique"
+            name={props.roomID}
             placeholder='Collaborate and write your code here...'
             showGutter={true}
             highlightActiveLine={false}
@@ -64,6 +78,9 @@ function EditorComp(props) {
             width='100%'
             height='100%'
             className='AceEditor'
+            value={props.code}
+            onChange={handleCodeChange}
+            ref={editorRef}
         />
     </div>
   )
