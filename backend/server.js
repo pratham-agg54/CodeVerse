@@ -1,6 +1,10 @@
 const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+require('dotenv').config()
+require('./db/index');
+const RoomCode = require('./model/roomCode');
+
 
 const app = express();
 const httpServer = createServer(app);
@@ -11,16 +15,15 @@ const io = new Server (httpServer, {
 }
 )
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 const roomUsers = new Map();
-const roomCode=  new Map();
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
 io.on ('connection', (socket) => {
-  socket.on ("join-event", (roomID, username) => {
+  socket.on ("join-event", async (roomID, username) => {
     socket.join (roomID);
     if (!roomUsers.has(roomID)) {
       roomUsers.set (roomID, []);
@@ -33,8 +36,14 @@ io.on ('connection', (socket) => {
     }
     io.to(roomID).emit('connected-users', roomUsers.get(roomID));
 
-    const currentCode = roomCode.get(roomID) || '';
-    socket.emit('code-update', currentCode);
+    try {
+      const room = await RoomCode.findOne ({roomID});
+      const currentCode = room ? room.code : '';
+      socket.emit ('code-update', currentCode);
+    }
+    catch (err) {
+      console.error ('Error fetching room code from database', err);
+    }
     
   })
 
@@ -52,9 +61,19 @@ io.on ('connection', (socket) => {
     io.to(roomID).emit ('connected-users', roomUsers.get(roomID));
   })
 
-  socket.on ("code-change", (roomID, newCode) => {
-    roomCode.set(roomID, newCode);
+  socket.on ("code-change", async (roomID, newCode) => {
     socket.to(roomID).emit('code-update', newCode);
+
+    try {
+      await RoomCode.findOneAndUpdate(
+        { roomID },
+        { code: newCode }, 
+        { upsert: true, new: true}
+      );
+    }
+    catch (err) {
+      console.error ('Error saving room code to database', err);
+    }
   })
   
 });
