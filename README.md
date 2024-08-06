@@ -28,6 +28,7 @@ Welcome to CodeVerse, a dynamic multi-user code editor designed to facilitate re
 - **Language Support**: Supports 4 different programming languages: C++, Java, Python, Go.
 - **Themes**: Choose from 4 different themes: Monokai, GitHub, Twilight, Xcode.
 - **Real-Time Synchronization**: Code changes are synchronized in real-time across all users in the room.
+- **Persistent Code Storage**: Code associated with room IDs is stored in MongoDB Atlas, ensuring code is preserved across sessions and server-side updates.
 
 ## Tech Stack
 
@@ -42,6 +43,7 @@ Welcome to CodeVerse, a dynamic multi-user code editor designed to facilitate re
 
 - **Node.js**: A JavaScript runtime for building the server-side logic and handling real-time communication.
 - **Express**: A web framework for managing routes and server-side operations.
+- **MongoDB**: A NoSQL database for storing code associated with room IDs.
 - **Socket.io**: Enables real-time, bidirectional communication between clients and the server.
 
 ### Utilities
@@ -112,7 +114,7 @@ Ensure you have the following installed:
 
 3. **Collaborate:**
 
-   Start writing code in the editor. Your code will be synchronized in real-time with all users in the same room.
+   Start writing code in the editor. Your code will be synchronized in real-time with all users in the same room. Changes will be saved in MongoDB, ensuring persistence across sessions.
 
 ## Project Structure
 
@@ -126,7 +128,7 @@ The frontend is built with React and uses the following libraries:
 
 ### Backend
 
-The backend is built with Node.js and Express and uses Socket.io for real-time communication.
+The backend is built with Node.js and Express and uses Socket.io for real-time communication. MongoDB is used for storing code associated with room IDs.
 
 ### Utilities
 
@@ -145,7 +147,7 @@ Contributions are welcome! Please follow these steps to contribute:
 
 ## Acknowledgements
 
-- Thanks to the developers of React, Node.js, Express, Socket.io, Ace Editor, React Avatar, and React Hot Toast for their amazing tools.
+- Thanks to the developers of React, Node.js, Express, Socket.io, Ace Editor, React Avatar, React Hot Toast, and MongoDB for their amazing tools.
 
 ---
 
